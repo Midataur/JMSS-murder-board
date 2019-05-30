@@ -6,10 +6,10 @@
 		<link href="{{ url_for('static', filename='style.css') }}?q=123" type="text/css" rel="stylesheet">
 	</head>
 	<body>
-		<h1 class="header">Leaderboard</h1>
-		<a href="/newplayer">Add a new player</a>
-		<br />
-		<a href="/newkill">Add a kill</a>
+		<h1 class="header">JMSS Murder Roleplay</h1>
+		<h2 class="subheader1">Leaderboard</h2>
+		<a class="button" href="/newplayer">Add a new player</a>
+		<a class="button" href="/newkill">Add a kill</a>
 		<table id = "players" class="board">
 			<tr id="table-head">
 				<th onclick="sortTable(0)">Player</th>
@@ -18,7 +18,7 @@
 				<th onclick="sortTable(3)">Status</th>
 			</tr>
 			{% for x in players %}
-				<div id="{{x[0]}}}">
+				<div id="{{x[0]}}">
 					<tr class="player">
 						<td>{{x[3]}}</td>
 						<td>{{x[0]}}</td>

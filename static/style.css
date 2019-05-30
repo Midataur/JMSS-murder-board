@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    margin:auto;
+    text-align:center;
+    padding-top:1%;
+    font-size:75px;
+}
+
+.subheader1 {
+    margin:auto;
+    text-align:center;
+    padding-top:5px;
+    font-size:40px;
+}
+
+.button {
+	border: 2px solid black;
+	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+	padding: 5px 10px;
+	display: inline-block;
+	margin: 15px 5px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+	outline: none;
+	position: relative;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+    transition: all 0.3s;
+    text-decoration:none;
+    text-align:center !important;
+}
