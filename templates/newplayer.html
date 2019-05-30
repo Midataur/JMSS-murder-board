@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Make a new player</title>
-		<link rel="stylesheet" href="/static/css/reset.css?q=1280549780" type="text/css" media="screen" charset="utf-8" />
-		<link href="{{ url_for('static', filename='style.css') }}?q=123" type="text/css" rel="stylesheet">
+{% extends "base.html" %}
+{% block head %}
 		<script>
 			function getUrlVars() {
 					var vars = {};
@@ -18,9 +14,9 @@
 								'taken':'Code taken',
 								'invalid':'One of the fields was invalid',}
 		</script>
-	</head>
-	<body>
-		<h1 class="header">Create a new player</h1>
+{%endblock%}
+{%block content%}
+		<h2>Create a new player</h2>
 		<div id="main">
 			<h2 class="error" id="fail"></h2>
 			<script>
@@ -38,5 +34,4 @@
 				<input type="submit" value="Submit"/>
 			</form>
 		</div>
-	</body>
-</html>
+{%endblock%}
