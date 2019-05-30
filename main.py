@@ -67,4 +67,8 @@ def createkill():
     conn.close()
     return 'Kill made!<br/><a href="/">Leaderboard</a>'
 
+@app.route('/admin')
+def adminpage():
+    return render_template('admin.html')
+
 
