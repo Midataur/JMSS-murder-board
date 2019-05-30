@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Log a kill</title>
+		<link rel="stylesheet" href="/static/css/reset.css?q=1280549780" type="text/css" media="screen" charset="utf-8" />
+		<link href="{{ url_for('static', filename='style.css') }}?q=123" type="text/css" rel="stylesheet">
+		<script>
+			function getUrlVars() {
+					var vars = {};
+					var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+					vars[key] = value;
+					});
+					return vars;
+				}
+		</script>
+		<script>
+			var errormessages = {'wrong':'Wrong password',
+								'taken':'Code taken',
+								'dead':'One of the players is dead',}
+		</script>
+	</head>
+	<body>
+		<h1 class="header">Log a kill</h1>
+		<div id="main">
+			<h2 class="error" id="fail"></h2>
+			<script>
+				if( getUrlVars()['fail'] != undefined) {
+					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
+				}
+			</script>
+			<form action="/createkill" method="POST">
+				Victim code:<input type="text" name="victim"/>
+				<br/>
+				Killer code:<input type="text" name="killer"/>
+				<br/>
+				Admin Password:<input type="password" name="pass1"/>
+				<br />
+				<input type="submit" value="Submit"/>
+			</form>
+		</div>
+	</body>
+</html>

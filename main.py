@@ -18,29 +18,53 @@ def main():
 def newplayer():
     return render_template('newplayer.html')
 
-@app.route('/createuser',methods=['POST'])
+@app.route('/createplayer',methods=['POST'])
 def createplayer():
     conn = sqlite3.connect('main.db')
     curs = conn.cursor()
-    curs.execute('SELECT * FROM users WHERE username = ?;',(request.form['username'],))
+    curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['code'],))
     #Check if something was wrong with the inputs
-    if request.form['username'] == '' or request.form['pass1'] == '':
+    if request.form['playername'] == '' or request.form['pass1'] == '' or request.form['code'] == '':
         conn.close()
-        return '<script>window.location = "/newuser?fail=empty"</script>'
+        return '<script>window.location = "/newplayer?fail=invalid"</script>'
     elif curs.fetchone() != None:
         conn.close()
-        return '<script>window.location = "/newuser?fail=taken"</script>'
-    elif request.form['pass1'] != request.form['pass2']:
+        return '<script>window.location = "/newplayer?fail=taken"</script>'
+    elif request.form['pass1'] != 'obvigriefprotec': #Quality security right there
         conn.close()
-        return '<script>window.location = "/newuser?fail=diff"</script>'
-    elif len(request.form['pass1']) < 7:
-        conn.close()
-        return '<script>window.location = "/newuser?fail=short"</script>'
-    #Create user
-    curs.execute('INSERT INTO users (username,password) VALUES (?,?)',(request.form['username'],hashlib.md5(request.form['pass1']).hexdigest()))
+        return '<script>window.location = "/newplayer?fail=wrong"</script>'
+    #Create player
+    curs.execute('INSERT INTO players (code,kills,alive,name) VALUES (?,0,1,?)',(request.form['code'],request.form['playername']))
     conn.commit()
     conn.close()
-    return 'User made!<br/><a href="/login">Login</a>'
+    return 'Player made!<br/><a href="/">Leaderboard</a>'
 
+@app.route('/newkill')
+def newkill():
+    return render_template('newkill.html')
+
+@app.route('/createkill',methods=['POST'])
+def createkill():
+    conn = sqlite3.connect('main.db')
+    curs = conn.cursor()
+    curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['killer'],))
+    killer = curs.fetchone()
+    curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['victim'],))
+    victim = curs.fetchone()
+    if killer == None or victim == None:
+        conn.close()
+        return '<script>window.location = "/newkill?fail=invalid"</script>'
+    elif request.form['pass1'] != 'obvigriefprotec': #Quality security right there
+        conn.close()
+        return '<script>window.location = "/newkill?fail=wrong"</script>'
+    elif killer[2] == 0 or victim[2] == 0:
+        conn.close()
+        return '<script>window.location = "/newkill?fail=dead"</script>'
+    #Create kill
+    curs.execute('UPDATE players SET kills = kills+1 WHERE code = ?',(request.form['killer'],))
+    curs.execute('UPDATE players SET alive = 0 WHERE code = ?',(request.form['victim'],))
+    conn.commit()
+    conn.close()
+    return 'Kill made!<br/><a href="/">Leaderboard</a>'
 
 

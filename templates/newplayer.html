@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Make a new user</title>
+		<title>Make a new player</title>
 		<link rel="stylesheet" href="/static/css/reset.css?q=1280549780" type="text/css" media="screen" charset="utf-8" />
 		<link href="{{ url_for('static', filename='style.css') }}?q=123" type="text/css" rel="stylesheet">
 		<script>
@@ -14,14 +14,13 @@
 				}
 		</script>
 		<script>
-			var errormessages = {'short':'Your password is too short',
-								'taken':'That username is taken',
-								'diff':'Your passwords did not match',
-								'empty':'Username or password was empty'}
+			var errormessages = {'wrong':'Wrong password',
+								'taken':'Code taken',
+								'invalid':'One of the fields was invalid',}
 		</script>
 	</head>
 	<body>
-		<h1 class="header">Create a new user</h1>
+		<h1 class="header">Create a new player</h1>
 		<div id="main">
 			<h2 class="error" id="fail"></h2>
 			<script>
@@ -29,17 +28,15 @@
 					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
 				}
 			</script>
-			<h4 class="rules">Password rule: Make it at least 7 characters long</h4>
-			<form action="/createuser" method="POST">
-				Username:<input type="text" name="username"/>
+			<form action="/createplayer" method="POST">
+				Player name:<input type="text" name="playername"/>
 				<br/>
-				Password:<input type="password" name="pass1"/>
-				<br />
-				Re-enter password:<input type="password" name="pass2"/>
+				Player code:<input type="text" name="code"/>
+				<br/>
+				Admin Password:<input type="password" name="pass1"/>
 				<br />
 				<input type="submit" value="Submit"/>
 			</form>
-			<a href="/login">Login</a>
 		</div>
 	</body>
 </html>
