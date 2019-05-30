@@ -1,0 +1,9 @@
+{
+  "name": "jmss-murder-board",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "mac": "sass ./assets/main.scss ./static/main.css ; FLASK_APP=main.py flask run "
+  }
+
+}

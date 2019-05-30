@@ -1,0 +1,133 @@
+.ui {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  min-height: calc(100vh - 100px);
+  padding-bottom: 10px; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+body {
+  font-family: "San Francisco";
+  font-weight: 600;
+  overflow: auto; }
+
+.pa8 {
+  padding: 8px; }
+
+.leaderboard-item {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  page-break-after: 8px;
+  margin-bottom: 8px; }
+
+.leaderboard-item__container {
+  display: flex;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px; }
+
+.leaderboard-user {
+  vertical-align: middle;
+  border: 2px solid #fff;
+  padding: 2px; }
+
+.leaderboard-user__text {
+  font-size: 27px;
+  color: #000000;
+  font-weight: 600; }
+
+.leaderboard-status {
+  margin-left: auto;
+  flex: none;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 2px;
+  color: #000; }
+  .leaderboard-status--first {
+    border: 2px solid #007B14;
+    color: #007B14; }
+  .leaderboard-status--second {
+    border: 2px solid #fa0;
+    color: #fa0; }
+  .leaderboard-status--not-top {
+    border: 2px solid #05f;
+    color: #05f; }
+  .leaderboard-status--dead {
+    border: 2px solid #f05;
+    color: #f05; }
+
+.leaderboard-status__text {
+  font-size: 27px;
+  text-align: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-weight: 800; }
+
+.button {
+  background: #FFFFFF;
+  border: 2px solid #000000;
+  box-shadow: 0 4px 0 0 #000000;
+  border-radius: 10px;
+  text-align: center;
+  page-break-after: 8px;
+  padding: 8px;
+  margin-bottom: 12px;
+  margin-top: 8px; }
+
+.button:active {
+  background: #fff;
+  border: 2px solid #000000;
+  box-shadow: 0 0px 0 0 #000000;
+  margin-top: 12px;
+  margin-bottom: -4px; }
+
+.button__text {
+  font-size: 27px;
+  text-align: center;
+  font-weight: 800; }
+  .button__text--thin {
+    font-weight: 400; }
+  .button__text--var {
+    font-style: italic;
+    text-decoration: underline; }
+
+.button--sort {
+  margin-top: 12px; }
+
+.button--sort:active {
+  margin-top: 14px;
+  margin-bottom: 10px; }
+
+.header {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 4px; }
+
+.footer {
+  border-top: 2px solid #000;
+  padding-bottom: 8px;
+  height: 80px; }
+
+.footer__title {
+  padding-top: 8px;
+  font-size: 24px;
+  color: #000000;
+  text-align: center; }
+
+.footer__subtitle {
+  font-size: 13px;
+  color: #000000;
+  text-align: center;
+  font-weight: 300;
+  padding-top: 4px; }
+  .footer__subtitle--fr {
+    font-size: 13px;
+    font-weight: 400; }
+
+/*# sourceMappingURL=main.css.map */
