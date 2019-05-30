@@ -14,6 +14,7 @@ def main():
     return render_template('index.html',players=players)
     conn.close()
 
+
 @app.route('/newplayer')
 def newplayer():
     return render_template('newplayer.html')
