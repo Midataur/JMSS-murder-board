@@ -25,6 +25,9 @@ body {
   page-break-after: 8px;
   margin-bottom: 8px; }
 
+.leaderboard-item--first {
+    background:#8eff8e; }
+
 .leaderboard-item__container {
   display: flex;
   padding-left: 8px;
