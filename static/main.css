@@ -211,4 +211,38 @@ body {
 .form-item {
   padding: 8px; }
 
+.FAB {
+  box-shadow: 0px 3px 5px -1px rgba(0, 85, 255, 0.2), 0px 6px 10px 0px rgba(0, 85, 255, 0.14), 0px 1px 18px 0px rgba(0, 85, 255, 0.12);
+  border-radius: 27px;
+  background-color: #fff;
+  border: 2px solid #05f;
+  -webkit-appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  padding: 0.5em 1.6em;
+  cursor: pointer;
+  line-height: 1.2;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem; }
+
+.FAB__text {
+  font-size: 20px;
+  color: #05f;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none; }
+
+.FAB__icon {
+  margin-right: 4px; }
+
+@media only screen and (max-width: 726px) {
+  /*body {
+  	margin-bottom: 54px;
+  }*/
+  .FAB {
+    display: none; } }
+
 /*# sourceMappingURL=main.css.map */
