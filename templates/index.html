@@ -17,11 +17,16 @@
 	<div class="leaderboard-item">
 		<div class="leaderboard-item__container">
 			<div class="leaderboard-user">
-				<span class="leaderboard-user__text">{{player[3]}}</span>
+				<span class="leaderboard-user__text">{{player[3]+"|"+player[0]}}</span>
 			</div>
-			<div class="leaderboard-status {% if player[2] == 1 %} leaderboard-status--not-top {% else %} leaderboard-status--dead {% endif %}">
-				<span class="leaderboard-status__text">{% if player[2] == 1 %}{{player[1]}} kills{% else %}DEAD{% endif %}</span>
+			<div class="leaderboard-status leaderboard-status--not-top">
+				<span class="leaderboard-status__text">{{player[1]}} kills</span>
 			</div>
+			{% if player[2] != 1 %}
+			<div class="leaderboard-status leaderboard-status--dead">
+				<span class="leaderboard-status__text">DEAD</span>
+			</div>
+			{% endif %}
 		</div>
 	</div>
 {% endfor %}

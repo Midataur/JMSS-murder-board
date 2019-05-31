@@ -35,7 +35,8 @@ body {
 .leaderboard-user {
   vertical-align: middle;
   border: 2px solid #fff;
-  padding: 2px; }
+  padding: 2px;
+  margin-right:auto; }
 
 .leaderboard-user__text {
   font-size: 27px;
@@ -43,7 +44,7 @@ body {
   font-weight: 600; }
 
 .leaderboard-status {
-  margin-left: auto;
+  margin-left: none;
   flex: none;
   border: 2px solid #000;
   border-radius: 10px;
@@ -57,10 +58,12 @@ body {
     color: #fa0; }
   .leaderboard-status--not-top {
     border: 2px solid #05f;
-    color: #05f; }
+    color: #05f;
+    padding-right:none; }
   .leaderboard-status--dead {
     border: 2px solid #f05;
-    color: #f05; }
+    color: #f05;
+    padding-left:none; }
 
 .leaderboard-status__text {
   font-size: 27px;
