@@ -1,15 +1,6 @@
 {% extends "base.html" %}
 {% block head %}
 		<script>
-			function getUrlVars() {
-					var vars = {};
-					var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-					vars[key] = value;
-					});
-					return vars;
-				}
-		</script>
-		<script>
 			var errormessages = {'wrong':'Wrong password',
 								'taken':'Code taken',
 								'invalid':'One of the fields was invalid',}
@@ -19,12 +10,12 @@
 {%block content%}
 		<h2>Create a new player</h2>
 		<div id="main">
+			{% if fail != None %}
 			<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
 			<script>
-				if( getUrlVars()['fail'] != undefined) {
-					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
-				}
+				document.getElementById('fail').innerText = errormessages["{{fail}}"]
 			</script>
+			{% endif %}
 			<form action="/createplayer" method="POST">
 				<div class="form-item">
 					<label>Player name:</label>
