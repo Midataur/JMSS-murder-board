@@ -25,14 +25,27 @@
 					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
 				}
 			</script>
-			<form action="/createkill" method="POST">
+			<form action="/createkill" method="POST" class="kill-form">
 				<div class="form-item">
 					<label>Victim code:</label>
-					<input type="text" name="victim"/>
+					<input type="text" name="victim" list="livingVictimList"/>
+
+					<datalist id="livingVictimList">
+						{% for player in living %}
+							<option value="{{player[0]}}">
+						{%endfor%}
+					</datalist>
 				</div>
 				<div class="form-item">
 					<label>Killer code:</label>
-					<input type="text" name="killer"/>
+
+					<input type="text" name="killer" list="livingKillerList"/>
+
+					<datalist id="livingKillerList">
+						{% for player in living %}
+							<option value="{{player[0]}}">
+						{%endfor%}
+					</datalist>
 				</div>
 				<div class="form-item">
 					<label>Admin Password:</label>
@@ -43,3 +56,6 @@
 				</div>	
 			</form>
 {%endblock%}	
+{%block foot%}
+<script src="{{ url_for('static', filename='bower_components/datalist-polyfill/datalist-polyfill.js') }}"></script>
+{%endblock%}
