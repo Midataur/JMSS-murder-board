@@ -17,19 +17,29 @@
 {%endblock%}
 {% block content %}
 		<h2>Log a kill</h2>
-			<h2 class="error" id="fail"></h2>
+
+				<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
+
 			<script>
 				if( getUrlVars()['fail'] != undefined) {
 					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
 				}
 			</script>
 			<form action="/createkill" method="POST">
-				Victim code:<input type="text" name="victim"/>
-				<br/>
-				Killer code:<input type="text" name="killer"/>
-				<br/>
-				Admin Password:<input type="password" name="pass1"/>
-				<br />
-				<input type="submit" value="Submit"/>
+				<div class="form-item">
+					<label>Victim code:</label>
+					<input type="text" name="victim"/>
+				</div>
+				<div class="form-item">
+					<label>Killer code:</label>
+					<input type="text" name="killer"/>
+				</div>
+				<div class="form-item">
+					<label>Admin Password:</label>
+					<input type="password" name="pass1"/>
+				</div>
+				<div class="form-item">
+					<input type="submit" value="Submit"/>
+				</div>	
 			</form>
 {%endblock%}	

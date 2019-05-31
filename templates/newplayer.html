@@ -18,19 +18,25 @@
 {%block content%}
 		<h2>Create a new player</h2>
 		<div id="main">
-			<h2 class="error" id="fail"></h2>
+			<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
 			<script>
 				if( getUrlVars()['fail'] != undefined) {
 					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
 				}
 			</script>
 			<form action="/createplayer" method="POST">
-				Player name:<input type="text" name="playername"/>
-				<br/>
-				Player code:<input type="text" name="code"/>
-				<br/>
-				Admin Password:<input type="password" name="pass1"/>
-				<br />
+				<div class="form-item">
+					<label>Player name:</label>
+					<input type="text" name="playername"/>
+				</div>
+				<div class="form-item">
+					<label>Player code:</label>
+					<input type="text" name="code"/>
+				</div>
+				<div class="form-item">
+					<label>Admin Password:</label>
+					<input type="password" name="pass1"/>
+				</div>
 				<input type="submit" value="Submit"/>
 			</form>
 		</div>
