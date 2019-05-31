@@ -3,17 +3,27 @@ import sqlite3
 import hashlib
 import time
 app = Flask(__name__)
-open('main.db')
+open('./main.db')
+
+def players_sort(players):
+    living,dead = [],[]
+    for x in players:
+        if x[2] == 1:
+            living.append(x)
+        else:
+            dead.append(x)
+    living.sort(key=lambda x: x[1])
+    dead.sort(key=lambda x: x[1])
+    return living[::-1]+dead[::-1]
 
 @app.route('/')
 def main():
-    conn = sqlite3.connect('main.db')
+    conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
     curs.execute('SELECT * FROM players')
-    players = curs.fetchall()
-    return render_template('index.html',players=players)
+    players = players_sort(curs.fetchall())
     conn.close()
-
+    return render_template('index.html',players=players)
 
 @app.route('/newplayer')
 def newplayer():
@@ -21,7 +31,7 @@ def newplayer():
 
 @app.route('/createplayer',methods=['POST'])
 def createplayer():
-    conn = sqlite3.connect('main.db')
+    conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['code'],))
     #Check if something was wrong with the inputs
@@ -46,7 +56,7 @@ def newkill():
 
 @app.route('/createkill',methods=['POST'])
 def createkill():
-    conn = sqlite3.connect('main.db')
+    conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['killer'],))
     killer = curs.fetchone()

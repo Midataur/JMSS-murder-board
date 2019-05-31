@@ -1,3 +1,5 @@
 x create link to joining google form
 x sort by dead or not then by most kills.
-x message sy link
+x message cy link
+add link to discord
+make font size responsive so that long names don't break things
