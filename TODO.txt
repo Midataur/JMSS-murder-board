@@ -4,3 +4,4 @@ x message cy link
 x add link to discord (Fab)
 x fix ui on mobile
 x make selection dropdown
+x create rules page

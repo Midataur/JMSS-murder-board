@@ -40,6 +40,10 @@ def main():
 def newplayer():
     return render_template('newplayer.html')
 
+@app.route('/rules')
+def rules():
+    return render_template('rules.html')
+
 @app.route('/createplayer',methods=['POST'])
 def createplayer():
     conn = sqlite3.connect('./main.db')
