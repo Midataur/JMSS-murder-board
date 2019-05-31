@@ -1,3 +1,6 @@
+.is-hidden {
+  display: none; }
+
 .ui {
   max-width: 600px;
   margin-left: auto;
@@ -156,5 +159,53 @@ body {
   .footer__subtitle--fr {
     font-size: 13px;
     font-weight: 400; }
+
+.top-spot {
+  background: #000;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  page-break-after: 8px;
+  margin-bottom: 8px; }
+
+.top-spot__container {
+  padding: 8px; }
+
+.top-spot-award__text {
+  font-size: 27px;
+  font-weight: 800;
+  color: #fff;
+  font-style: italic; }
+
+.top-spot-user {
+  border: 2px solid #fa0;
+  border-radius: 10px;
+  padding: 2px;
+  color: #fa0;
+  text-align: center;
+  margin-top: 4px; }
+
+.top-spot-user__text {
+  font-size: 27px;
+  text-align: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-weight: 800; }
+
+.fukol {
+  margin-bottom: 8px; }
+
+.fukol-grid {
+  display: flex;
+  /* 1 */
+  flex-wrap: wrap;
+  /* 2 */
+  margin: -4px;
+  /* 5 (edit me!) */ }
+
+.fukol-grid > * {
+  flex: 1 0 13em;
+  /* 3 (edit me!) */
+  margin: 4px;
+  /* 4 (edit me!) */ }
 
 /*# sourceMappingURL=main.css.map */

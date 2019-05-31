@@ -12,8 +12,48 @@
 			<span class="button__text button__text--thin">Join the <span class="button__text button__text--var">Game</span> (not open yet)</span>
 		</div>
 	</a>
+
+	<!-- top spots -->
+	<div class="fukol">
+		<div class="fukol-grid">
+			{% for player in players %}
+			<!-- only draw least dead player text -->
+			{% if loop.index == 1 %}
+			<div class="top-spot">
+				<div class="top-spot__container">
+					<div class="top-spot-award">
+						<span class="top-spot-award__text">
+							MOST KILLS
+						</span>
+					</div>
+					<div class="top-spot-user">
+						<span class="top-spot-user__text">
+							{{player[3]}}
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="top-spot">
+				<div class="top-spot__container">
+					<div class="top-spot-award">
+						<span class="top-spot-award__text">
+							LEAST DEAD
+						</span>
+					</div>
+					<div class="top-spot-user">
+						<span class="top-spot-user__text">
+							{{player[3]}}
+						</span>
+					</div>
+				</div>
+			</div>
+			{%endif%}
+			{% endfor %}
+		</div>
+	</div>
 	<!-- leaderboard -->
 	{% for player in players %}
+	<a href="javascript:alert('{{player[3]}} has killed {{player[1]}} {% if player[1] != 1 %}people{% else %}person{% endif %}')">
 	<div class="leaderboard-item">
 		<div class="leaderboard-item__container">
 			<div class="leaderboard-user">
@@ -27,6 +67,7 @@
 			</div>
 		</div>
 	</div>
+	</a>
 {% endfor %}
 {% endblock %}
 		
