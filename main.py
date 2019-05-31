@@ -52,7 +52,11 @@ def createplayer():
 
 @app.route('/newkill')
 def newkill():
-    return render_template('newkill.html')
+    conn = sqlite3.connect('./main.db')
+    curs = conn.cursor()
+    curs.execute('SELECT * FROM players WHERE alive = 1;',(request.form['code'],))
+    conn.close()
+    return render_template('newkill.html',living=curs.fetchall())
 
 @app.route('/createkill',methods=['POST'])
 def createkill():
@@ -65,7 +69,7 @@ def createkill():
     if killer == None or victim == None:
         conn.close()
         return '<script>window.location = "/newkill?fail=invalid"</script>'
-    elif request.form['pass1'] != 'obvigriefprotec': #Quality security right there
+    elif request.form['pass1'] != 'obvigriefprotec':
         conn.close()
         return '<script>window.location = "/newkill?fail=wrong"</script>'
     elif killer[2] == 0 or victim[2] == 0:
@@ -74,6 +78,7 @@ def createkill():
     #Create kill
     curs.execute('UPDATE players SET kills = kills+1 WHERE code = ?',(request.form['killer'],))
     curs.execute('UPDATE players SET alive = 0 WHERE code = ?',(request.form['victim'],))
+    curs.execute('INSERT INTO kills (victim,killer) VALUES (?,?)',(request.form['victim'],request.form['killer']))
     conn.commit()
     conn.close()
     return 'Kill made!<br/><a href="/">Leaderboard</a>'
@@ -82,4 +87,18 @@ def createkill():
 def adminpage():
     return render_template('admin.html')
 
-
+@app.route('/reset',methods=['GET','POST'])
+def reset():
+    if request.method == 'GET':
+        return render_template('reset.html')
+    else:
+        if request.form['pass1'] == 'obvigriefprotec':
+            conn = sqlite3.connect('./main.db')
+            curs = conn.cursor()
+            curs.execute('UPDATE players SET kills = 0, alive = 1')
+            curs.execute('DELETE FROM kills')
+            conn.commit()
+            conn.close()
+            return 'Leader board reset!<br/><a href="/">Leaderboard</a>'
+        else:
+            return '<script>window.location = "/reset?fail=wrong"</script>'
