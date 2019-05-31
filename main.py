@@ -38,7 +38,7 @@ def main():
 
 @app.route('/newplayer')
 def newplayer():
-    return render_template('newplayer.html')
+    return render_template('newplayer.html',fail=None)
 
 @app.route('/createplayer',methods=['POST'])
 def createplayer():
@@ -48,13 +48,13 @@ def createplayer():
     #Check if something was wrong with the inputs
     if request.form['playername'] == '' or request.form['pass1'] == '' or request.form['code'] == '':
         conn.close()
-        return '<script>window.location = "/newplayer?fail=invalid"</script>'
+        return render_template('newplayer.html',fail="invalid")
     elif curs.fetchone() != None:
         conn.close()
-        return '<script>window.location = "/newplayer?fail=taken"</script>'
+        return render_template('newplayer.html',fail="taken")
     elif request.form['pass1'] != 'obvigriefprotec': #Quality security right there
         conn.close()
-        return '<script>window.location = "/newplayer?fail=wrong"</script>'
+        return render_template('newplayer.html',fail="wrong")
     #Create player
     curs.execute('INSERT INTO players (code,kills,alive,name) VALUES (?,0,1,?)',(request.form['code'],request.form['playername']))
     conn.commit()
@@ -68,7 +68,7 @@ def newkill():
     curs.execute('SELECT * FROM players WHERE alive = 1;')
     living = curs.fetchall()
     conn.close()
-    return render_template('newkill.html',living=living)
+    return render_template('newkill.html',living=living,fail=None)
 
 @app.route('/createkill',methods=['POST'])
 def createkill():
@@ -77,16 +77,18 @@ def createkill():
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['killer'],))
     killer = curs.fetchone()
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['victim'],))
+    curs.execute('SELECT * FROM players WHERE alive = 1;')
+    living = curs.fetchall()
     victim = curs.fetchone()
     if killer == None or victim == None:
         conn.close()
-        return '<script>window.location = "/newkill?fail=invalid"</script>'
+        return render_template('newkill.html',living=living,fail="invalid")
     elif request.form['pass1'] != 'obvigriefprotec':
         conn.close()
-        return '<script>window.location = "/newkill?fail=wrong"</script>'
+        return render_template('newkill.html',living=living,fail="wrong")
     elif killer[2] == 0 or victim[2] == 0:
         conn.close()
-        return '<script>window.location = "/newkill?fail=dead"</script>'
+        return render_template('newkill.html',living=living,fail="dead")
     #Create kill
     curs.execute('UPDATE players SET kills = kills+1 WHERE code = ?',(request.form['killer'],))
     curs.execute('UPDATE players SET alive = 0 WHERE code = ?',(request.form['victim'],))
