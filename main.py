@@ -5,7 +5,7 @@ import time
 app = Flask(__name__)
 open('./main.db')
 
-def players_sort(players):
+def default_sort(players):
     living,dead = [],[]
     for x in players:
         if x[2] == 1:
@@ -16,12 +16,20 @@ def players_sort(players):
     dead.sort(key=lambda x: x[1])
     return living[::-1]+dead[::-1]
 
+def kills_sort(players):
+    players = [list(x) for x in players]
+    by_kills = []
+    for x in range(len(players)):
+        by_kills.append(players.pop(players.index(players.max(lambda x: x[1]))))
+        by_kills[-1].append(x)
+    return by_kills
+
 @app.route('/')
 def main():
     conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
     curs.execute('SELECT * FROM players')
-    players = players_sort(curs.fetchall())
+    players = default_sort(curs.fetchall())
     conn.close()
     return render_template('index.html',players=players)
 
@@ -54,9 +62,10 @@ def createplayer():
 def newkill():
     conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
-    curs.execute('SELECT * FROM players WHERE alive = 1;',(request.form['code'],))
+    curs.execute('SELECT * FROM players WHERE alive = 1;')
+    living = curs.fetchall()
     conn.close()
-    return render_template('newkill.html',living=curs.fetchall())
+    return render_template('newkill.html',living=living)
 
 @app.route('/createkill',methods=['POST'])
 def createkill():
