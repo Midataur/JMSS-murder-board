@@ -25,10 +25,9 @@ body {
   page-break-after: 8px;
   margin-bottom: 8px; }
 
-.leaderboard-item--first {
-    background:#8eff8e; }
-
 .leaderboard-item__container {
+  display: flex;
+  flex: 1;
   display: flex;
   padding-left: 8px;
   padding-right: 8px;
@@ -38,16 +37,21 @@ body {
 .leaderboard-user {
   vertical-align: middle;
   border: 2px solid #fff;
-  padding: 2px;
-  margin-right:auto; }
+  padding: 2px; }
 
 .leaderboard-user__text {
   font-size: 27px;
   color: #000000;
   font-weight: 600; }
 
+.leaderboard-user__subtext {
+  font-size: 20px;
+  color: #ccc;
+  font-weight: 700;
+  margin-left: 4px; }
+
 .leaderboard-status {
-  margin-left: none;
+  margin-left: auto;
   flex: none;
   border: 2px solid #000;
   border-radius: 10px;
@@ -61,12 +65,10 @@ body {
     color: #fa0; }
   .leaderboard-status--not-top {
     border: 2px solid #05f;
-    color: #05f;
-    margin-right:2px; }
+    color: #05f; }
   .leaderboard-status--dead {
     border: 2px solid #f05;
-    color: #f05;
-    padding-left:none; }
+    color: #f05; }
 
 .leaderboard-status__text {
   font-size: 27px;
@@ -75,6 +77,25 @@ body {
   padding-right: 4px;
   font-weight: 800; }
 
+.leaderboard-status--mobile {
+  display: none;
+  flex: 1;
+  width: 100%;
+  text-align: center; }
+
+.leaderboard-status--desktop {
+  display: block; }
+
+@media only screen and (max-width: 402px) {
+  .leaderboard-status--mobile {
+    display: block; }
+
+  .leaderboard-status--desktop {
+    display: none; }
+
+  .leaderboard-item__container {
+    flex-direction: column;
+    padding-right: 16px; } }
 .button {
   background: #FFFFFF;
   border: 2px solid #000000;

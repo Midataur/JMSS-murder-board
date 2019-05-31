@@ -17,16 +17,14 @@
 	<div class="leaderboard-item">
 		<div class="leaderboard-item__container">
 			<div class="leaderboard-user">
-				<span class="leaderboard-user__text">{{player[3]+"|"+player[0]}}</span>
+				<span class="leaderboard-user__text">{{player[3]}}</span> <span class="leaderboard-user__subtext">{{player[0]}}</span> 
 			</div>
-			<div class="leaderboard-status leaderboard-status--{% if loop.index == 1 %}first{% else %}not-top{% endif %}">
-				<span class="leaderboard-status__text">{{player[1]}} kill{% if player[1] != 1 %}s{% endif %}</span>
+			<div class="leaderboard-status leaderboard-status--desktop leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead{%else%}not-top {%endif%}{% endif %}">
+				<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
 			</div>
-			{% if player[2] != 1 %}
-			<div class="leaderboard-status leaderboard-status--dead">
-				<span class="leaderboard-status__text">DEAD</span>
+			<div class="leaderboard-status leaderboard-status--mobile leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead{%else%}not-top {%endif%}{% endif %}">
+				<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
 			</div>
-			{% endif %}
 		</div>
 	</div>
 {% endfor %}
