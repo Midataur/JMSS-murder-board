@@ -16,9 +16,20 @@
 	<!-- top spots -->
 	<div class="fukol">
 		<div class="fukol-grid">
-			{% for player in players %}
-			<!-- only draw least dead player text -->
-			{% if loop.index == 1 %}
+			<div class="top-spot">
+				<div class="top-spot__container">
+					<div class="top-spot-award">
+						<span class="top-spot-award__text">
+							IN LEAD
+						</span>
+					</div>
+					<div class="top-spot-user">
+						<span class="top-spot-user__text">
+							{{players[0][3]}}
+						</span>
+					</div>
+				</div>
+			</div>
 			<div class="top-spot">
 				<div class="top-spot__container">
 					<div class="top-spot-award">
@@ -28,27 +39,11 @@
 					</div>
 					<div class="top-spot-user">
 						<span class="top-spot-user__text">
-							{{player[3]}}
+							{{kill_rank[0][3]}}
 						</span>
 					</div>
 				</div>
 			</div>
-			<div class="top-spot">
-				<div class="top-spot__container">
-					<div class="top-spot-award">
-						<span class="top-spot-award__text">
-							LEAST DEAD
-						</span>
-					</div>
-					<div class="top-spot-user">
-						<span class="top-spot-user__text">
-							{{player[3]}}
-						</span>
-					</div>
-				</div>
-			</div>
-			{%endif%}
-			{% endfor %}
 		</div>
 	</div>
 	<!-- leaderboard -->
