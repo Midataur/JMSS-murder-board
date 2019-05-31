@@ -18,20 +18,23 @@ def default_sort(players):
 
 def kills_sort(players):
     players = [list(x) for x in players]
-    by_kills = []
-    for x in range(len(players)):
-        by_kills.append(players.pop(players.index(players.max(lambda x: x[1]))))
-        by_kills[-1].append(x)
-    return by_kills
+    players.sort(key=lambda x: x[1])
+    players = players[::-1]
+    return players
 
 @app.route('/')
 def main():
     conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
     curs.execute('SELECT * FROM players')
-    players = default_sort(curs.fetchall())
-    conn.close()
-    return render_template('index.html',players=players)
+    players = curs.fetchall()
+    if players == []:
+        players = (('PLA0001',0,1,'Add players'),)
+        conn.close()
+        return render_template('index.html',players=players,kill_rank=players)
+    else:
+        conn.close()
+        return render_template('index.html',players=default_sort(players),kill_rank=kills_sort(players))
 
 @app.route('/newplayer')
 def newplayer():
