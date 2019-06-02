@@ -73,7 +73,7 @@ body {
     border: 2px solid #FF2B00;
     color: #FF2B00;
     transition: all 0.2s ease; }
-  .leaderboard-status--dead:hover {
+  .leaderboard-status--dead--button:hover {
     border: 2px solid #FF2B00;
     color: #fff;
     cursor: pointer;

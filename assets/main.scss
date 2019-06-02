@@ -93,13 +93,14 @@ body {
 			transition:all 0.2s ease;
 
 		}
-	&--dead:hover {
+	&--dead--button:hover {
       border: 2px solid	$color-red;
 			color: #fff;
 			cursor: pointer;
 			background-color: $color-red;
     }
 }
+
 
 .leaderboard-status__text{
 	font-size: 27px;

@@ -55,10 +55,10 @@
 				<span class="leaderboard-user__text">{{player[3]}}</span> 
 				<span class="leaderboard-user__subtext">{{player[0]}}</span> 
 			</div>
-			<div class="leaderboard-status leaderboard-status--desktop leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead{%else%}not-top {%endif%}{% endif %}">
+			<div class="leaderboard-status leaderboard-status--desktop leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead leaderboard-status--dead--button{%else%}not-top {%endif%}{% endif %}">
 				<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
 			</div>
-			<div class="leaderboard-status leaderboard-status--mobile leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead{%else%}not-top {%endif%}{% endif %}">
+			<div class="leaderboard-status leaderboard-status--mobile leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead leaderboard-status--dead--button{%else%}not-top {%endif%}{% endif %}">
 				<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
 			</div>
 		</div>
