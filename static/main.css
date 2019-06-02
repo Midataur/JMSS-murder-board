@@ -71,7 +71,13 @@ body {
     color: #05f; }
   .leaderboard-status--dead {
     border: 2px solid #FF2B00;
-    color: #FF2B00; }
+    color: #FF2B00;
+    transition: all 0.2s ease; }
+  .leaderboard-status--dead:hover {
+    border: 2px solid #FF2B00;
+    color: #fff;
+    cursor: pointer;
+    background-color: #FF2B00; }
 
 .leaderboard-status__text {
   font-size: 27px;

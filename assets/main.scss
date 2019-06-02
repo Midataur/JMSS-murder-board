@@ -90,7 +90,14 @@ body {
 	&--dead {
       border: 2px solid $color-red;
 			color: $color-red;
+			transition:all 0.2s ease;
 
+		}
+	&--dead:hover {
+      border: 2px solid	$color-red;
+			color: #fff;
+			cursor: pointer;
+			background-color: $color-red;
     }
 }
 
