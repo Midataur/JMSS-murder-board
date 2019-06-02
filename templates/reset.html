@@ -17,12 +17,12 @@
 {%block content%}
 		<h2>Reset game (kills and living status)</h2>
 		<div id="main">
-			<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
-			<script>
-				if( getUrlVars()['fail'] != undefined) {
-					document.getElementById('fail').innerText = errormessages[getUrlVars()['fail']]
-				}
-			</script>
+			{% if fail != None %}
+				<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
+				<script>
+					document.getElementById('fail').innerText = errormessages["{{fail}}"]
+				</script>
+			{% endif %}
 			<form action="/reset" method="POST">
 				<div class="form-item">
 					<label>Admin Password:</label>

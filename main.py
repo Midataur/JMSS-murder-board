@@ -81,9 +81,9 @@ def createkill():
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['killer'],))
     killer = curs.fetchone()
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['victim'],))
+    victim = curs.fetchone()
     curs.execute('SELECT * FROM players WHERE alive = 1;')
     living = curs.fetchall()
-    victim = curs.fetchone()
     if killer == None or victim == None:
         conn.close()
         return render_template('newkill.html',living=living,fail="invalid")
@@ -108,7 +108,7 @@ def adminpage():
 @app.route('/reset',methods=['GET','POST'])
 def reset():
     if request.method == 'GET':
-        return render_template('reset.html')
+        return render_template('reset.html',fail=None)
     else:
         if request.form['pass1'] == 'obvigriefprotec':
             conn = sqlite3.connect('./main.db')
@@ -119,4 +119,41 @@ def reset():
             conn.close()
             return 'Leader board reset!<br/><a href="/">Leaderboard</a>'
         else:
-            return '<script>window.location = "/reset?fail=wrong"</script>'
+            return render_template('reset.html',fail='wrong')
+
+@app.route('/delete',methods=['GET','POST'])
+def deleteplayer():
+    conn = sqlite3.connect('./main.db')
+    curs = conn.cursor()
+    curs.execute('SELECT * FROM players WHERE alive = 1;')
+    living = curs.fetchall()
+    if request.method == 'GET':
+        conn.close()
+        return render_template('delete.html',living=living,fail=None)
+    else:
+        if request.form['pass1'] == 'obvigriefprotec':
+            curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['code'],))
+            player = curs.fetchone()
+            if player != None:
+                curs.execute('DELETE FROM players WHERE code = ?',(request.form['code'],))
+                conn.commit()
+                conn.close()
+                return 'Player deleted!<br/><a href="/">Leaderboard</a>'
+            conn.close() 
+            return render_template('delete.html',living=living,fail='invalid')
+        conn.close()
+        return render_template('delete.html',living=living,fail='wrong')
+
+
+
+
+
+
+
+
+
+
+
+
+
+

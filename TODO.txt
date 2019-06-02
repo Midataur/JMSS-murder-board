@@ -5,3 +5,5 @@ x add link to discord (Fab)
 x fix ui on mobile
 x make selection dropdown
 x create rules page
+remove discord icon on admin page if possible
+fix admin page so it doesn't look fucky on phones

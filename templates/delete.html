@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block head %}
+		<script>
+			var errormessages = {'wrong':'Wrong password',
+								 'invalid':'Invalid code'}
+		</script>
+{%endblock%}
+{% block title %}Delete {%endblock%}
+{%block content%}
+		<h2>Delete a player</h2>
+		<div id="main">
+			{% if fail != None %}
+				<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
+				<script>
+					document.getElementById('fail').innerText = errormessages["{{fail}}"]
+				</script>
+			{% endif %}
+			<form action="/delete" method="POST">
+				<div class="form-item">
+					<label>Victim code:</label>
+					<input type="text" name="code" list="livingVictimList"/>
+					<datalist id="livingVictimList">
+						{% for player in living %}
+							<option value="{{player[0]}}">
+						{%endfor%}
+					</datalist>
+				</div>
+				<div class="form-item">
+					<label>Admin Password:</label>
+					<input type="password" name="pass1"/>
+				</div>
+				<input type="submit" value="I want to delete this player"/>
+			</form>
+		</div>
+{%endblock%}
+{%block foot%}
+<script src="{{ url_for('static', filename='bower_components/datalist-polyfill/datalist-polyfill.js') }}"></script>
+{%endblock%}
