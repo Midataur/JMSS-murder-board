@@ -70,8 +70,8 @@ body {
     border: 2px solid #05f;
     color: #05f; }
   .leaderboard-status--dead {
-    border: 2px solid #f05;
-    color: #f05; }
+    border: 2px solid #FF2B00;
+    color: #FF2B00; }
 
 .leaderboard-status__text {
   font-size: 27px;
