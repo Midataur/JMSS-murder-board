@@ -3,11 +3,39 @@
 {% block content %}
 		<h2 class="subheader1">Admin page</h2>
 		<a href="/newplayer">
-			<div class="leaderboard-status leaderboard-status--not-top">
-				<span class="leaderboard-status__text">Add a player</span>
+			<div class="leaderboard-item">
+				<div class="leaderboard-item__container">
+					<div class="leaderboard-user">
+						<span class="leaderboard-user__text">Add a new Player</span> 
+					</div>
+				</div>
 			</div>
 		</a>
-		<a class="button" href="/newkill">Add a kill</a>
-		<a class="button" href="/delete">Delete a player</a>
-		<a class="button" href="/reset">Reset leaderboard</a>
+		<a href="/newkill">
+			<div class="leaderboard-item">
+				<div class="leaderboard-item__container">
+					<div class="leaderboard-user">
+						<span class="leaderboard-user__text">Add a new Kill</span> 
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/delete">
+			<div class="leaderboard-item">
+				<div class="leaderboard-item__container">
+					<div class="leaderboard-user">
+						<span class="leaderboard-user__text">Delete a Player</span> 
+					</div>
+				</div>
+			</div>
+		</a>
+		<a href="/reset">
+			<div class="leaderboard-item">
+				<div class="leaderboard-item__container">
+					<div class="leaderboard-user">
+						<span class="leaderboard-user__text">Reset the Game</span> 
+					</div>
+				</div>
+			</div>
+		</a>
 {% endblock %}
