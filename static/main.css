@@ -259,7 +259,7 @@ body {
   	margin-bottom: 54px;
   }*/
   .FAB {
-    display: none; } }
+    display: inline-flex; } }
 .rules-download {
   padding-top: 4px;
   padding: 8px;
