@@ -5,6 +5,7 @@ x add link to discord (Fab)
 x fix ui on mobile
 x make selection dropdown
 x create rules page
+x add discord FAB to mobile
 remove discord icon on admin page if possible
 x fix admin page so it doesn't look fucky on phones
 x switch to google sheets API for ADDENDUM

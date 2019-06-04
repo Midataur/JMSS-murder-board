@@ -255,10 +255,10 @@ body {
   margin-right: 4px; }
 
 @media only screen and (max-width: 726px) {
-  /*body {
-  	margin-bottom: 54px;
-  }*/
-  .FAB {
+  body {
+    margin-bottom: 54px; }
+
+  .FAB__text__text {
     display: none; } }
 .rules-download {
   padding-top: 4px;
