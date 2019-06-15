@@ -1,17 +1,66 @@
 {% extends "base.html" %}
 {% block title%}Leaderboard {%endblock%}
+{% block head %}
+
+	    <!-- get joining infos -->
+		<script type="text/javascript">
+		Handlebars.registerHelper('if_eq', function(a, b, opts) {
+				if (a == b) {
+					return opts.fn(this);
+				} else {
+					return opts.inverse(this);
+				}
+			});
+			$(document).ready(function(){
+				$.getJSON('https://api.sheety.co/15776791-1e6b-42a3-a1f6-76197c5926f4', function(data) {
+					var template = Handlebars.compile($('#joinTemplate').html())
+					$('#joinButton').html(template(data))
+				})
+			})
+		</script>
+		<!-- template for joining objects -->
+		<script id="joinTemplate" type="text/x-handlebars-template">
+				{% raw %}
+			
+				{{#each this}}
+					{{#if_eq applicationIsOpen "no"}}
+					<a href="https://discord.gg/jpVq9HE" class="">
+						<div class="button button--sort">
+							<span class="button__text button__text--thin">Join the <span class="button__text button__text--var">Game</span></span>
+						</div>
+					</a>
+					{{else}}
+					<a href="https://forms.gle/zqRATLuCW3zDNNyC7" class="">
+						<div class="button button--sort">
+							<span class="button__text button__text--thin">Join the <span class="button__text button__text--var">Game</span></span>
+						</div>
+					</a>
+					{{/if_eq}}
+					
+				{{/each}}
+				{% endraw %}
+		</script>
+{% endblock %}
 {% block content %}
 	<!-- buttons -->
+
+
 	<a href="/rules" class="">
 		<div class="button">
 			<span class="button__text button__text--thin">Read the Rules</span>
 		</div>
 	</a>
-	<a href="https://forms.gle/zqRATLuCW3zDNNyC7" class="">
-		<div class="button button--sort">
-			<span class="button__text button__text--thin">Join the <span class="button__text button__text--var">Game</span></span>
-		</div>
-	</a>
+
+
+	<div id="joinButton">
+		<a href="" class="">
+			<div class="button button--sort">
+				<span class="button__text button__text--thin">Join the <span class="button__text button__text--var">Game</span></span>
+			</div>
+		</a>
+	</div>
+
+	
 
 	<!-- top spots -->
 	<div class="fukol">
