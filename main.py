@@ -90,9 +90,6 @@ def createkill():
     elif request.form['pass1'] != 'obvigriefprotec':
         conn.close()
         return render_template('newkill.html',living=living,fail="wrong")
-    elif killer[2] == 0 or victim[2] == 0:
-        conn.close()
-        return render_template('newkill.html',living=living,fail="dead")
     #Create kill
     curs.execute('UPDATE players SET kills = kills+1 WHERE code = ?',(request.form['killer'],))
     curs.execute('UPDATE players SET alive = 0 WHERE code = ?',(request.form['victim'],))
