@@ -1,5 +1,7 @@
 // imports
 
+$border-radius: 2px;
+
 // colours
 // base colours
 $color-green: #007B14;
@@ -9,7 +11,7 @@ $color-blue: #05f;
 // variable colours
 
 /* standard colours (black on white)*/
-  $color-text: #000;
+$color-text: #000;
 $color-bg: #fff;
 $color-subtext: #ccc;
 $color-border: #000;
@@ -69,7 +71,7 @@ body {
 }
 .leaderboard-item {
     background: $color-bg;
-		border: 2px solid $color-border;
+		border: $border-radius solid $color-border;
 		border-radius:10px;
 	page-break-after: 8px;
 	margin-bottom: 8px;
@@ -86,7 +88,7 @@ body {
 }
 .leaderboard-user {
 	vertical-align: middle;
-	border: 2px solid $color-bg;
+	border: $border-radius solid $color-bg;
 	padding:2px;
 }
 .leaderboard-user__text{
@@ -105,20 +107,20 @@ body {
 .leaderboard-status {
 	margin-left: auto;
   flex: none;
-	border: 2px solid $color-border;
+	border: $border-radius solid $color-border;
 	border-radius:10px;
 	padding:2px;
 	color: $color-text;
 	&--first {
-      border: 2px solid $color-leaderboard-status-first;
+      border: $border-radius solid $color-leaderboard-status-first;
 			color: $color-leaderboard-status-first;
     }
 	&--not-top {
-      border: 2px solid $color-leaderboard-status-standard;
+      border: $border-radius solid $color-leaderboard-status-standard;
 			color: $color-leaderboard-status-standard;
     }
 	&--dead {
-      border: 2px solid $color-leaderboard-status-dead;
+      border: $border-radius solid $color-leaderboard-status-dead;
 			color: $color-leaderboard-status-dead;
 			transition:all 0.2s ease;
 
@@ -159,7 +161,7 @@ body {
 }
 .button{
 	background: $color-bg;
-	border: 2px solid $color-border;
+	border: $border-radius solid $color-border;
 	box-shadow: 0 4px 0 0 $color-border;
 	border-radius:10px;
 	text-align: center;
@@ -172,7 +174,7 @@ margin-bottom:12px;
 
 .button:active{
 		background: $color-bg;
-border: 2px solid $color-border;
+border: $border-radius solid $color-border;
 	box-shadow: 0 0px 0 0 $color-border;
 	margin-top:12px;
 	margin-bottom:-4px
@@ -241,7 +243,7 @@ font-weight:300;
 
 .top-spot{
 	background: $color-topspot-bg;
-	border: 2px solid $color-topspot-bg;
+	border: $border-radius solid $color-topspot-bg;
 	border-radius:10px;
 	page-break-after: 8px;
 	margin-bottom: 8px;
@@ -256,7 +258,7 @@ font-weight:300;
 	font-style: italic
 }
 .top-spot-user{
-	border: 2px solid $color-topspot-accent;
+	border: $border-radius solid $color-topspot-accent;
 	border-radius:10px;
 	padding:2px;
 	color: $color-topspot-accent;
@@ -413,3 +415,21 @@ font-style:italic;
   html.is-animating .transition-fade {
 	opacity: 0;
   }
+
+.box{
+		margin-top:10px
+}
+.box-header{
+	border: 4px solid $color-border;
+	padding:8px;
+	text-align:center;
+	border-radius:10px
+}
+.box-header{
+	font-size: 30px;
+	color: $color-text;
+	text-align: center;
+}
+.box-header__arrow{
+	transform: translate(10px, -3px);
+}

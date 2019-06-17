@@ -103,23 +103,71 @@
 		</div>
 	</div>
 	<!-- leaderboard -->
+	<!-- leaderboard alive -->
+	<div class="box">
+	<div class="box-header">
+		<div class="box-header__text">Alive</div>
+	</div>
+	<div class="box-header__arrow">
+			<svg width="27px" height="45px" viewBox="0 0 27 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				<g id="Mobile-Portrait-Copy" transform="translate(-189.000000, -201.000000)" fill="#000" fill-rule="nonzero">
+					<path id="Line-2" d="M204.5,235.614987 L212.006849,222.269478 C212.548377,221.306762 213.767807,220.965321 214.730522,221.506849 C215.693238,222.048377 216.034679,223.267807 215.493151,224.230522 L204.243151,244.230522 C203.478543,245.589826 201.521457,245.589826 200.756849,244.230522 L189.506849,224.230522 C188.965321,223.267807 189.306762,222.048377 190.269478,221.506849 C191.232193,220.965321 192.451623,221.306762 192.993151,222.269478 L200.5,235.614987 L200.5,223.25 L200.5,203 C200.5,201.895431 201.395431,201 202.5,201 C203.604569,201 204.5,201.895431 204.5,203 L204.5,223.25 L204.5,235.614987 Z"></path>
+				</g>
+			</g>
+		</svg>
+	</div>
+	</div>
 	{% for player in players %}
-	<a href="javascript:alert('{{player[3]}} has killed {{player[1]}} {% if player[1] != 1 %}people{% else %}person{% endif %}')">
-	<div class="leaderboard-item">
-		<div class="leaderboard-item__container">
-			<div class="leaderboard-user">
-				<span class="leaderboard-user__text">{{player[3]}}</span> 
-				<span class="leaderboard-user__subtext">{{player[0]}}</span> 
-			</div>
-			<div class="leaderboard-status leaderboard-status--desktop leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead leaderboard-status--dead--button{%else%}not-top {%endif%}{% endif %}">
-				<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
-			</div>
-			<div class="leaderboard-status leaderboard-status--mobile leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead leaderboard-status--dead--button{%else%}not-top {%endif%}{% endif %}">
-				<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
+		{% if player[2] == 1 %}
+		<div class="leaderboard-item">
+			<div class="leaderboard-item__container">
+				<div class="leaderboard-user">
+					<span class="leaderboard-user__text">{{player[3]}}</span> 
+					<span class="leaderboard-user__subtext">{{player[0]}}</span> 
+				</div>
+				<div class="leaderboard-status leaderboard-status--desktop leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead leaderboard-status--dead--button{%else%}not-top {%endif%}{% endif %}">
+					<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
+				</div>
+				<div class="leaderboard-status leaderboard-status--mobile leaderboard-status--{% if loop.index == 1 %}first{% else %}{% if player[2] != 1 %}dead leaderboard-status--dead--button{%else%}not-top {%endif%}{% endif %}">
+					<span class="leaderboard-status__text">{% if player[2] != 1 %}DEAD{%else%}{{player[1]}} kill{% if player[1] != 1 %}s{% endif %} {%endif%}</span>
+				</div>
 			</div>
 		</div>
+		{%endif%}
+	{% endfor %}
+	<!-- leaderboard dead -->
+	<div class="box">
+	<div class="box-header">
+		<div class="box-header__text">Dead</div>
 	</div>
-	</a>
-{% endfor %}
+	<div class="box-header__arrow">
+			<svg width="27px" height="45px" viewBox="0 0 27 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			<g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+				<g id="Mobile-Portrait-Copy" transform="translate(-189.000000, -201.000000)" fill="#000" fill-rule="nonzero">
+					<path id="Line-2" d="M204.5,235.614987 L212.006849,222.269478 C212.548377,221.306762 213.767807,220.965321 214.730522,221.506849 C215.693238,222.048377 216.034679,223.267807 215.493151,224.230522 L204.243151,244.230522 C203.478543,245.589826 201.521457,245.589826 200.756849,244.230522 L189.506849,224.230522 C188.965321,223.267807 189.306762,222.048377 190.269478,221.506849 C191.232193,220.965321 192.451623,221.306762 192.993151,222.269478 L200.5,235.614987 L200.5,223.25 L200.5,203 C200.5,201.895431 201.395431,201 202.5,201 C203.604569,201 204.5,201.895431 204.5,203 L204.5,223.25 L204.5,235.614987 Z"></path>
+				</g>
+			</g>
+		</svg>
+	</div>
+	</div>
+	{% for player in players %}
+		{% if player[2] != 1 %}
+		<div class="leaderboard-item">
+			<div class="leaderboard-item__container">
+				<div class="leaderboard-user">
+					<span class="leaderboard-user__text">{{player[3]}}</span> 
+					<span class="leaderboard-user__subtext">{{player[0]}}</span> 
+				</div>
+				<div class="leaderboard-status leaderboard-status--desktop leaderboard-status--dead">
+					<span class="leaderboard-status__text">{{player[1]}} kill{% if player[1] != 1 %}s{% endif %}</span>
+				</div>
+				<div class="leaderboard-status leaderboard-status--mobile leaderboard-status--dead">
+					<span class="leaderboard-status__text">{{player[1]}} kill{% if player[1] != 1 %}s{% endif %}</span>
+				</div>
+			</div>
+		</div>
+		{%endif%}
+	{% endfor %}
 {% endblock %}
 		

@@ -15,4 +15,4 @@ x Cant asparagus be abused?
 x You can't throw the spoon, it has to be in your hand when you kill them
 x stabbing as soon as you leave class
 ---
-add drop down arrow boxes to segregate the dead from alive
+x add drop down arrow boxes to segregate the dead from alive
