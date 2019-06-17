@@ -238,10 +238,8 @@ body {
   padding: 8px; }
 
 .FAB {
-  box-shadow: 0px 3px 5px -1px rgba(0, 85, 255, 0.2), 0px 6px 10px 0px rgba(0, 85, 255, 0.14), 0px 1px 18px 0px rgba(0, 85, 255, 0.12);
   border-radius: 27px;
   background-color: #fff;
-  border: 2px solid #05f;
   -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
@@ -252,7 +250,9 @@ body {
   line-height: 1.2;
   position: fixed;
   bottom: 1rem;
-  right: 1rem; }
+  right: 1rem;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 2px #05f, 0 0 0 7px #fff; }
 
 .FAB__text {
   font-size: 20px;
@@ -336,5 +336,12 @@ body {
   border-top: none;
   text-align: center;
   font-weight: 400; }
+
+.transition-fade {
+  transition: 0.4s;
+  opacity: 1; }
+
+html.is-animating .transition-fade {
+  opacity: 0; }
 
 /*# sourceMappingURL=main.css.map */

@@ -23,30 +23,40 @@
     <script src="https://kit.fontawesome.com/9caeb0b335.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+    <script src="{{ url_for('static', filename='turbolinks.js') }}"></script>
+    <style>
+            html.turbolinks-progress-bar::before {
+                background-color:#fff !important;
+                height: 4px !important;
+            }
+            body {
+                margin-top: 4px;
+            }
+        </style>
 
-    <!-- get addendum infos -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $.getJSON('https://api.sheety.co/3583ae2e-eb07-462c-aa59-9f2feb6ebf9c', function(data) {
-                var template = Handlebars.compile($('#addendumTemplate').html())
-                $('#addendumItems').html(template(data))
-            })
-        })
-    </script>
-    <!-- template for addendum objects -->
-    <script id="addendumTemplate" type="text/x-handlebars-template">
-            {% raw %}
-        
-            {{#each this}}
-                <div class="addendum-item">
-                    <div class="addendum-item__title">{{question}}</div>
-                    <div class="addendum-item__answer">{{answer}}</div>
-                </div>
-            {{/each}}
-            {% endraw %}
-    </script>
 </head>
 <body class="ui--red">
+        <!-- get addendum infos -->
+        <script type="text/javascript" data-turbolinks-eval=always>
+            $(document).ready(function(){
+                $.getJSON('https://api.sheety.co/3583ae2e-eb07-462c-aa59-9f2feb6ebf9c', function(data) {
+                    var template = Handlebars.compile($('#addendumTemplate').html())
+                    $('#addendumItems').html(template(data))
+                })
+            })
+        </script>
+        <!-- template for addendum objects -->
+        <script id="addendumTemplate" type="text/x-handlebars-template" data-turbolinks-eval=always>
+                {% raw %}
+            
+                {{#each this}}
+                    <div class="addendum-item">
+                        <div class="addendum-item__title">{{question}}</div>
+                        <div class="addendum-item__answer">{{answer}}</div>
+                    </div>
+                {{/each}}
+                {% endraw %}
+        </script>
     <div class="ui ui--red">
         <header class="header" style="margin-bottom:7px;">
             <a href="/">

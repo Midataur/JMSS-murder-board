@@ -290,10 +290,8 @@ font-weight:300;
 padding:8px
 }
 .FAB {
-	box-shadow: 0px 3px 5px -1px rgba(0, 85, 255, 0.2), 0px 6px 10px 0px rgba(0, 85, 255, 0.14), 0px 1px 18px 0px rgba(0, 85, 255, 0.12);
 	border-radius: 27px;
 	background-color: #fff;
-	border: 2px solid $color-blue;
 	-webkit-appearance: none;
 	display: inline-flex;
 	align-items: center;
@@ -305,6 +303,10 @@ padding:8px
 	position: fixed;
 	bottom: 1rem;
 	right: 1rem;
+	background: #FFFFFF;
+	box-shadow:
+    0 0 0 2px $color-blue,
+    0 0 0 7px $color-bg;
 }
 .FAB__text{
 	font-size: 20px;
@@ -402,3 +404,12 @@ font-style:italic;
 	text-align:center;
 	font-weight:400;
 }
+
+.transition-fade {
+	transition: 0.4s;
+	opacity: 1;
+  }
+  
+  html.is-animating .transition-fade {
+	opacity: 0;
+  }

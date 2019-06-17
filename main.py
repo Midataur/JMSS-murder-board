@@ -1,9 +1,13 @@
 from flask import Flask, request, url_for, render_template
+
 import sqlite3
 import hashlib
 import time
+from flask_turbolinks import turbolinks
+
 app = Flask(__name__)
 open('./main.db')
+turbolinks(app)
 
 def default_sort(players):
     living,dead = [],[]
