@@ -69,7 +69,7 @@ def createplayer():
 def newkill():
     conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
-    curs.execute('SELECT * FROM players WHERE alive = 1;')
+    curs.execute('SELECT * FROM players;')
     living = curs.fetchall()
     conn.close()
     return render_template('newkill.html',living=living,fail=None)
@@ -82,14 +82,19 @@ def createkill():
     killer = curs.fetchone()
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['victim'],))
     victim = curs.fetchone()
-    curs.execute('SELECT * FROM players WHERE alive = 1;')
+    curs.execute('SELECT * FROM players;')
     living = curs.fetchall()
+    curs.execute('SELECT * FROM kills WHERE victim = ? AND killer = ?;',(request.form['victim'],request.form['killer']))
+    kill_exists = curs.fetchone()
     if killer == None or victim == None:
         conn.close()
         return render_template('newkill.html',living=living,fail="invalid")
     elif request.form['pass1'] != 'obvigriefprotec':
         conn.close()
         return render_template('newkill.html',living=living,fail="wrong")
+    elif kill_exists != None:
+        conn.close()
+        return render_template('newkill.html',living=living,fail="exists")
     #Create kill
     curs.execute('UPDATE players SET kills = kills+1 WHERE code = ?',(request.form['killer'],))
     curs.execute('UPDATE players SET alive = 0 WHERE code = ?',(request.form['victim'],))
@@ -122,7 +127,7 @@ def reset():
 def deleteplayer():
     conn = sqlite3.connect('./main.db')
     curs = conn.cursor()
-    curs.execute('SELECT * FROM players WHERE alive = 1;')
+    curs.execute('SELECT * FROM players;')
     living = curs.fetchall()
     if request.method == 'GET':
         conn.close()
@@ -141,8 +146,40 @@ def deleteplayer():
         conn.close()
         return render_template('delete.html',living=living,fail='wrong')
 
-
-
+@app.route('/undokill',methods=['GET','POST'])
+def undokill():
+    conn = sqlite3.connect('./main.db')
+    curs = conn.cursor()
+    curs.execute('SELECT * FROM players;')
+    living = curs.fetchall()
+    if request.method == 'GET':
+        conn.close()
+        return render_template('undokill.html',living=living,fail=None)
+    else:
+        conn = sqlite3.connect('./main.db')
+        curs = conn.cursor()
+        curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['killer'],))
+        killer = curs.fetchone()
+        curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['victim'],))
+        victim = curs.fetchone()
+        curs.execute('SELECT * FROM kills WHERE victim = ? AND killer = ?;',(request.form['victim'],request.form['killer']))
+        kill_exists = curs.fetchone()
+        if killer == None or victim == None:
+            conn.close()
+            return render_template('undokill.html',living=living,fail="invalid")
+        elif request.form['pass1'] != 'obvigriefprotec':
+            conn.close()
+            return render_template('undokill.html',living=living,fail="wrong")
+        elif kill_exists == None:
+            conn.close()
+            return render_template('undokill.html',living=living,fail="exists")
+        #Create kill
+        curs.execute('UPDATE players SET kills = kills-1 WHERE code = ?',(request.form['killer'],))
+        curs.execute('UPDATE players SET alive = 1 WHERE code = ?',(request.form['victim'],))
+        curs.execute('DELETE FROM kills WHERE victim = ? AND killer = ?',(request.form['victim'],request.form['killer']))
+        conn.commit()
+        conn.close()
+        return 'Kill undone!<br/><a href="/">Leaderboard</a>'
 
 
 

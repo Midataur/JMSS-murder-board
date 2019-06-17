@@ -3,19 +3,19 @@
 		<script>
 			var errormessages = {'wrong':'Wrong password',
 								'invalid':"One of those players doesn't exist",
-								'exists':'That kill already exists',}
+								'exists':'That kill doesn\'t exist',}
 		</script>
 {%endblock%}
-{% block title %}Kill log {%endblock%}
+{% block title %}Undo a kill {%endblock%}
 {% block content %}
-		<h2>Log a kill</h2>
+		<h2>Undo a kill</h2>
 		{% if fail != None %}
 			<h3 class="leaderboard-status leaderboard-status--dead leaderboard-status__text" id="fail"></h3>
 			<script>
 				document.getElementById('fail').innerText = errormessages["{{fail}}"]
 			</script>
 		{% endif %}
-		<form action="/createkill" method="POST" class="kill-form">
+		<form action="/undokill" method="POST" class="kill-form">
 			<div class="form-item">
 				<label>Victim code:</label>
 				<input type="text" name="victim" list="livingVictimList"/>
