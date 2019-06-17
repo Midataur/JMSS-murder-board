@@ -14,3 +14,5 @@ x You can create a team between others, but it is most likey to hinder your succ
 x Cant asparagus be abused?
 x You can't throw the spoon, it has to be in your hand when you kill them
 x stabbing as soon as you leave class
+---
+add drop down arrow boxes to segregate the dead from alive

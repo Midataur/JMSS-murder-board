@@ -1,7 +1,23 @@
+/* standard colours (black on white)*/
+/*
+$color-text: #fff;
+$color-bg: $color-red;
+$color-subtext: #fff;
+$color-border: #fff;
+
+$color-leaderboard-status-first: $color-border;
+$color-leaderboard-status-standard: $color-border;
+$color-leaderboard-status-dead: $color-border;
+
+$color-topspot-bg: $color-text;
+$color-topspot-accent: $color-red;
+$color-topspot-text:	$color-bg;*/
 .is-hidden {
   display: none; }
 
 .ui {
+  background-color: #fff;
+  color: #000;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -19,14 +35,15 @@ a {
 body {
   font-family: "San Francisco";
   font-weight: 600;
-  overflow: auto; }
+  overflow: auto;
+  background-color: #fff; }
 
 .pa8 {
   padding: 8px; }
 
 .leaderboard-item {
-  background: #FFFFFF;
-  border: 2px solid #000000;
+  background: #fff;
+  border: 2px solid #000;
   border-radius: 10px;
   page-break-after: 8px;
   margin-bottom: 8px; }
@@ -47,7 +64,7 @@ body {
 
 .leaderboard-user__text {
   font-size: 27px;
-  color: #000000;
+  color: #000;
   font-weight: 600; }
 
 .leaderboard-user__subtext {
@@ -66,9 +83,6 @@ body {
   .leaderboard-status--first {
     border: 2px solid #007B14;
     color: #007B14; }
-  .leaderboard-status--second {
-    border: 2px solid #fa0;
-    color: #fa0; }
   .leaderboard-status--not-top {
     border: 2px solid #05f;
     color: #05f; }
@@ -76,11 +90,6 @@ body {
     border: 2px solid #FF2B00;
     color: #FF2B00;
     transition: all 0.2s ease; }
-  .leaderboard-status--dead--button:hover {
-    border: 2px solid #FF2B00;
-    color: #fff;
-    cursor: pointer;
-    background-color: #FF2B00; }
 
 .leaderboard-status__text {
   font-size: 27px;
@@ -109,9 +118,9 @@ body {
     flex-direction: column;
     padding-right: 16px; } }
 .button {
-  background: #FFFFFF;
-  border: 2px solid #000000;
-  box-shadow: 0 4px 0 0 #000000;
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: 0 4px 0 0 #000;
   border-radius: 10px;
   text-align: center;
   page-break-after: 8px;
@@ -121,15 +130,16 @@ body {
 
 .button:active {
   background: #fff;
-  border: 2px solid #000000;
-  box-shadow: 0 0px 0 0 #000000;
+  border: 2px solid #000;
+  box-shadow: 0 0px 0 0 #000;
   margin-top: 12px;
   margin-bottom: -4px; }
 
 .button__text {
   font-size: 27px;
   text-align: center;
-  font-weight: 800; }
+  font-weight: 800;
+  color: #000; }
   .button__text--thin {
     font-weight: 400; }
   .button__text--var {
@@ -159,14 +169,14 @@ body {
 .footer__title {
   padding-top: 8px;
   font-size: 24px;
-  color: #000000;
+  color: #000;
   text-align: center; }
   .footer__title--ui-red {
     color: #fff !important; }
 
 .footer__subtitle {
   font-size: 13px;
-  color: #000000;
+  color: #000;
   text-align: center;
   font-weight: 300;
   padding-top: 4px; }
@@ -178,7 +188,7 @@ body {
 
 .top-spot {
   background: #000;
-  border: 2px solid #000000;
+  border: 2px solid #000;
   border-radius: 10px;
   page-break-after: 8px;
   margin-bottom: 8px; }

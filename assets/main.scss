@@ -1,10 +1,37 @@
 // imports
 
 // colours
+// base colours
 $color-green: #007B14;
 $color-yellow: #fa0;
 $color-red: #FF2B00;
 $color-blue: #05f;
+// variable colours
+
+/* standard colours (black on white)*/
+  $color-text: #000;
+$color-bg: #fff;
+$color-subtext: #ccc;
+$color-border: #000;
+$color-leaderboard-status-first: $color-green;
+$color-leaderboard-status-standard: $color-blue;
+$color-leaderboard-status-dead: $color-red;
+$color-topspot-bg: #000;
+$color-topspot-accent: $color-yellow;
+$color-topspot-text: #fff;  
+/*
+$color-text: #fff;
+$color-bg: $color-red;
+$color-subtext: #fff;
+$color-border: #fff;
+
+$color-leaderboard-status-first: $color-border;
+$color-leaderboard-status-standard: $color-border;
+$color-leaderboard-status-dead: $color-border;
+
+$color-topspot-bg: $color-text;
+$color-topspot-accent: $color-red;
+$color-topspot-text:	$color-bg;*/
 
 // real cool utility class that is not BEM compliant but is useful
 .is-hidden{
@@ -12,6 +39,8 @@ $color-blue: #05f;
 }
 
 .ui {
+	background-color: $color-bg;
+	color: $color-text;
   max-width: 600px;
 	margin-left: auto;
   margin-right: auto;
@@ -26,20 +55,21 @@ $color-blue: #05f;
 
 a {
 	text-decoration:none;
-	color:#000
+	color: $color-text
 }
 body {
 	font-family:"San Francisco";
 	font-weight:600;
 		overflow: auto;
+	background-color: $color-bg
 }
 
 .pa8 {
 	padding:8px
 }
 .leaderboard-item {
-    background: #FFFFFF;
-		border: 2px solid #000000;
+    background: $color-bg;
+		border: 2px solid $color-border;
 		border-radius:10px;
 	page-break-after: 8px;
 	margin-bottom: 8px;
@@ -56,18 +86,18 @@ body {
 }
 .leaderboard-user {
 	vertical-align: middle;
-	border: 2px solid #fff;
+	border: 2px solid $color-bg;
 	padding:2px;
 }
 .leaderboard-user__text{
 	font-size: 27px;
-	color: #000000;
+	color: $color-text;
 	font-weight:600;
 
 }
 .leaderboard-user__subtext {
 	font-size: 20px;
-	color: #ccc;
+	color: $color-subtext;
 	font-weight: 700;
 	margin-left: 4px
 }
@@ -75,34 +105,24 @@ body {
 .leaderboard-status {
 	margin-left: auto;
   flex: none;
-	border: 2px solid #000;
+	border: 2px solid $color-border;
 	border-radius:10px;
 	padding:2px;
-	color: #000;
+	color: $color-text;
 	&--first {
-      border: 2px solid $color-green;
-			color: $color-green;
-    }
-	&--second {
-      border: 2px solid $color-yellow;
-			color: $color-yellow;
+      border: 2px solid $color-leaderboard-status-first;
+			color: $color-leaderboard-status-first;
     }
 	&--not-top {
-      border: 2px solid $color-blue;
-			color: $color-blue;
+      border: 2px solid $color-leaderboard-status-standard;
+			color: $color-leaderboard-status-standard;
     }
 	&--dead {
-      border: 2px solid $color-red;
-			color: $color-red;
+      border: 2px solid $color-leaderboard-status-dead;
+			color: $color-leaderboard-status-dead;
 			transition:all 0.2s ease;
 
 		}
-	&--dead--button:hover {
-      border: 2px solid	$color-red;
-			color: #fff;
-			cursor: pointer;
-			background-color: $color-red;
-    }
 }
 
 
@@ -138,9 +158,9 @@ body {
 	
 }
 .button{
-	background: #FFFFFF;
-	border: 2px solid #000000;
-	box-shadow: 0 4px 0 0 #000000;
+	background: $color-bg;
+	border: 2px solid $color-border;
+	box-shadow: 0 4px 0 0 $color-border;
 	border-radius:10px;
 	text-align: center;
 	page-break-after: 8px;
@@ -151,9 +171,9 @@ margin-bottom:12px;
 }
 
 .button:active{
-		background: #fff;
-border: 2px solid #000000;
-	box-shadow: 0 0px 0 0 #000000;
+		background: $color-bg;
+border: 2px solid $color-border;
+	box-shadow: 0 0px 0 0 $color-border;
 	margin-top:12px;
 	margin-bottom:-4px
 
@@ -163,6 +183,7 @@ border: 2px solid #000000;
 	font-size: 27px;
 	text-align: center;
 	font-weight:800;
+	color: $color-text;
 		&--thin{
 			font-weight:400;
 			}
@@ -184,7 +205,7 @@ border: 2px solid #000000;
 	padding-left:4px;
 }
 .footer {
-	border-top: 2px solid #000;
+	border-top: 2px solid $color-text;
 	padding-bottom:8px;
 	height: 80px;
 	&--ui-red{
@@ -195,7 +216,7 @@ border: 2px solid #000000;
 .footer__title {
 	padding-top:8px;
 	font-size: 24px;
-	color: #000000;
+	color: $color-text;
 	text-align: center;
 	&--ui-red{
 		color:#fff !important;
@@ -204,7 +225,7 @@ border: 2px solid #000000;
 .footer__subtitle{
 	
 font-size: 13px;
-color: #000000;
+color: $color-text;
 text-align: center;
 font-weight:300;
 	padding-top:4px;
@@ -219,8 +240,8 @@ font-weight:300;
 
 
 .top-spot{
-	background: #000;
-	border: 2px solid #000000;
+	background: $color-topspot-bg;
+	border: 2px solid $color-topspot-bg;
 	border-radius:10px;
 	page-break-after: 8px;
 	margin-bottom: 8px;
@@ -231,14 +252,14 @@ font-weight:300;
 .top-spot-award__text{
 	font-size:27px;
 	font-weight:800;
-	color:#fff;
+	color:$color-topspot-text;
 	font-style: italic
 }
 .top-spot-user{
-	border: 2px solid $color-yellow;
+	border: 2px solid $color-topspot-accent;
 	border-radius:10px;
 	padding:2px;
-	color: $color-yellow;
+	color: $color-topspot-accent;
 	text-align:center;
 	margin-top:4px;
 }
