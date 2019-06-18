@@ -34,10 +34,11 @@
         margin-top: 4px;
     }
 </style>
-    {% block head %}
-    {% endblock %}
+    
 </head>
 <body class="transition-fade" id="swup">
+        {% block head %}
+        {% endblock %}
     <div class="ui" >
         <header class="header">
             <a href="/">
@@ -62,9 +63,10 @@
         <div class="footer__subtitle ">ダーシーとマックスによって作ら</div>
         <div class="footer__subtitle footer__subtitle--fr ">Fait par Darcy et Max</div>
     </footer>
+    {%block foot%}
+    {%endblock%}
 </body>
 
-  {%block foot%}
-  {%endblock%}
+
   
 </html>
