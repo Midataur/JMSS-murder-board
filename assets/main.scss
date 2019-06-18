@@ -95,6 +95,9 @@ body {
 	font-size: 27px;
 	color: $color-text;
 	font-weight:600;
+	&--dead{
+		text-decoration: line-through;
+	}
 
 }
 .leaderboard-user__subtext {

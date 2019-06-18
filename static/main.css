@@ -66,6 +66,8 @@ body {
   font-size: 27px;
   color: #000;
   font-weight: 600; }
+  .leaderboard-user__text--dead {
+    text-decoration: line-through; }
 
 .leaderboard-user__subtext {
   font-size: 20px;
