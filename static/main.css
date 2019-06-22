@@ -109,7 +109,7 @@ body {
 .leaderboard-status--desktop {
   display: block; }
 
-@media only screen and (max-width: 402px) {
+@media only screen and (max-width: 485px) {
   .leaderboard-status--mobile {
     display: block; }
 
@@ -254,14 +254,31 @@ body {
   bottom: 1rem;
   right: 1rem;
   background: #FFFFFF;
-  box-shadow: 0 0 0 2px #05f, 0 0 0 7px #fff; }
+  box-shadow: 0 0 0 2px #05f, 0 0 0 7px #fff;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+  .FAB:hover {
+    background-color: #05f; }
+
+.FAB:hover > .FAB__text {
+  color: #fff; }
 
 .FAB__text {
   font-size: 20px;
   color: #05f;
   text-align: center;
   text-decoration: none;
-  text-transform: none; }
+  text-transform: none;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
+  .FAB__text:hover {
+    color: #fff; }
 
 .FAB__icon {
   margin-right: 4px; }

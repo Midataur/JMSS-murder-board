@@ -149,7 +149,7 @@ body {
 .leaderboard-status--desktop{
 	display: block;
 }
-@media only screen and (max-width: 402px) {
+@media only screen and (max-width: 485px) {
 	.leaderboard-status--mobile {
 		display: block;
 	}
@@ -296,7 +296,7 @@ padding:8px
 }
 .FAB {
 	border-radius: 27px;
-	background-color: #fff;
+	background-color: $color-bg;
 	-webkit-appearance: none;
 	display: inline-flex;
 	align-items: center;
@@ -311,7 +311,18 @@ padding:8px
 	background: #FFFFFF;
 	box-shadow:
     0 0 0 2px $color-blue,
-    0 0 0 7px $color-bg;
+	0 0 0 7px $color-bg;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	&:hover{
+		background-color: $color-blue;	
+	}
+}
+.FAB:hover > .FAB__text {
+	color: $color-bg
 }
 .FAB__text{
 	font-size: 20px;
@@ -319,10 +330,19 @@ padding:8px
 	text-align: center;
 	text-decoration: none;
 	text-transform: none;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	&:hover{
+		color: $color-bg;
+	}
 }
 .FAB__icon{
 	margin-right: 4px;
 }
+
 @media only screen and (max-width: 726px) {
 	body {
 		margin-bottom: 54px;
