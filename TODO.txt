@@ -9,10 +9,8 @@ x add discord FAB to mobile
 remove discord icon on admin page if possible
 x fix admin page so it doesn't look fucky on phones
 x switch to google sheets API for ADDENDUM
---- RULES ADDENDUM ---
-x You can create a team between others, but it is most likey to hinder your success.
-x Cant asparagus be abused?
-x You can't throw the spoon, it has to be in your hand when you kill them
-x stabbing as soon as you leave class
----
+x You can create a team between others, but it is most likey to hinder your success. @rules
+x Cant asparagus be abused? @rules
+x You can't throw the spoon, it has to be in your hand when you kill them @rules
+x stabbing as soon as you leave class @rules
 x add drop down arrow boxes to segregate the dead from alive
