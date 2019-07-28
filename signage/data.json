@@ -1,0 +1,62 @@
+[
+    {
+      "position": 0, 
+      "image": "https://i.pravatar.cc/300?u=veronicabenton@bleeko.com", 
+      "isDead": false, 
+      "name": "Veronica Benton"
+    }, 
+    {
+      "position": 1, 
+      "image": "https://i.pravatar.cc/300?u=doreensparks@bleeko.com", 
+      "isDead": false, 
+      "name": "Doreen Sparks"
+    }, 
+    {
+      "position": 2, 
+      "image": "https://i.pravatar.cc/300?u=janblevins@bleeko.com", 
+      "isDead": false, 
+      "name": "Jan Blevins"
+    }, 
+    {
+      "position": 3, 
+      "image": "https://i.pravatar.cc/300?u=ermamacdonald@bleeko.com", 
+      "isDead": false, 
+      "name": "Erma Macdonald"
+    }, 
+    {
+      "position": 4, 
+      "image": "https://i.pravatar.cc/300?u=haleylester@bleeko.com", 
+      "isDead": false, 
+      "name": "Haley Lester"
+    }, 
+    {
+      "position": 5, 
+      "image": "https://i.pravatar.cc/300?u=justinelee@bleeko.com", 
+      "isDead": false, 
+      "name": "Justine Lee"
+    }, 
+    {
+      "position": 6, 
+      "image": "https://i.pravatar.cc/300?u=chanhurst@bleeko.com", 
+      "isDead": false, 
+      "name": "Chan Hurst"
+    }, 
+    {
+      "position": 7, 
+      "image": "https://i.pravatar.cc/300?u=stephensday@bleeko.com", 
+      "isDead": false, 
+      "name": "Stephens Day"
+    }, 
+    {
+      "position": 8, 
+      "image": "https://i.pravatar.cc/300?u=dominiquewilson@bleeko.com", 
+      "isDead": false, 
+      "name": "Dominique Wilson"
+    }, 
+    {
+      "position": 9, 
+      "image": "https://i.pravatar.cc/300?u=jeanettegoodwin@bleeko.com", 
+      "isDead": false, 
+      "name": "Jeanette Goodwin"
+    }
+  ]
