@@ -1,5 +1,5 @@
 // imports
-
+@import "colfax";
 $border-radius: 2px;
 
 // colours
@@ -60,7 +60,7 @@ a {
 	color: $color-text
 }
 body {
-	font-family:"San Francisco";
+	font-family: "Colfax", "San Francisco", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
 	font-weight:600;
 		overflow: auto;
 	background-color: $color-bg
