@@ -132,3 +132,5 @@ assets/bower_components
 .bower-registry
 .bower-tmp
 main.pyc
+*.db
+*.pyc
