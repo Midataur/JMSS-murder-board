@@ -14,3 +14,4 @@ x Cant asparagus be abused? @rules
 x You can't throw the spoon, it has to be in your hand when you kill them @rules
 x stabbing as soon as you leave class @rules
 x add drop down arrow boxes to segregate the dead from alive
+add collective fullstack logo to footer

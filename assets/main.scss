@@ -210,8 +210,10 @@ border: $border-radius solid $color-border;
 	padding-left:4px;
 }
 .footer {
+	
+	align-items: center;
 	border-top: 2px solid $color-text;
-	padding-bottom:8px;
+	padding-bottom:16px;
 	height: 80px;
 	&--ui-red{
 		border-top: 2px solid #fff;
@@ -242,7 +244,17 @@ font-weight:300;
 		color:#fff !important;
 	}
 }
+.footer__image__container {
+	margin-left: auto;
+	margin-right: auto;
+	width:10em;
+	margin-top: 16px;
+	margin-bottom:0px;
+}
+.footer__image{
+	width:100%;
 
+}
 
 .top-spot{
 	background: $color-topspot-bg;
@@ -459,23 +471,6 @@ font-style:italic;
 .box-header__arrow{
 	transform: translate(10px, -3px);
 }
-/* .pride-flag {
-	//position: absolute;
-	bottom: 100%;
-	//left: 5rem;
-	//display: inline-block;
-	content: '';
-	//width: 5.3rem;
-	height: 5.2rem;
-	background: url(https://cdn.vapid.site/sites/879171f0-6b4d-11e8-8c7a-3190ec1a491d/images/flag-ff31094c40dd63827237c40addc59b2b.gif) center center no-repeat;
-	background-size: auto 100%;
-} */
 
-.footer:hover {
-	-webkit-text-fill-color: transparent;
-	background: -webkit-linear-gradient(transparent, transparent),
-			   url(https://media1.tenor.com/images/c1e64cb3c2ed9c44ed99eb729dd08277/tenor.gif?itemid=14424466) repeat;
-	background: -o-linear-gradient(transparent, transparent);
-	-webkit-background-clip: text;
-	color:#000
-}
+
+
