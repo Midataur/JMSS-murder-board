@@ -24,6 +24,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
     <script src="{{ url_for('static', filename='turbolinks.js') }}"></script>
+    	
     <style>
             html.turbolinks-progress-bar::before {
                 background-color:#fff !important;
@@ -36,6 +37,19 @@
 
 </head>
 <body class="ui--red">
+    	<!-- global climate strike script -->
+		<script type="text/javascript" data-turbolinks-eval=always>
+            var DIGITAL_CLIMATE_STRIKE_OPTIONS = {
+              /**
+               * Prevents the widget iframe from loading Google Analytics. Defaults to
+               * false. (Google Analytics will also be disabled if doNotTrack is set on
+               * the user's browser.)
+               */
+              disableGoogleAnalytics: true, // @type {boolean}
+            };
+          </script>
+          <script src="https://assets.digitalclimatestrike.net/widget.js" async data-turbolinks-eval=always></script>
+  
         <!-- get addendum infos -->
         <script type="text/javascript" data-turbolinks-eval=always>
             $(document).ready(function(){
