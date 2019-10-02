@@ -47,7 +47,7 @@ $color-topspot-text:	$color-bg;*/
 	margin-left: auto;
   margin-right: auto;
 	padding:8px;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 110px);
 	padding-bottom:10px;
 	&--red {
 		background-color: $color-red;
@@ -214,7 +214,7 @@ border: $border-radius solid $color-border;
 	align-items: center;
 	border-top: 2px solid $color-text;
 	padding-bottom:16px;
-	height: 80px;
+	height: 95px;
 	&--ui-red{
 		border-top: 2px solid #fff;
 		color:#fff !important;

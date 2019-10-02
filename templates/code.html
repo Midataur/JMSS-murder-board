@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% block title%}Leaderboard {%endblock%}
+{% block head %}
+
+	    
+		
+{% endblock %}
+{% block content %}
+
+<!-- get joining infos -->
+<script type="text/javascript" data-turbolinks-eval=always>
+	Handlebars.registerHelper('if_eq', function(a, b, opts) {
+			if (a == b) {
+				return opts.fn(this);
+			} else {
+				return opts.inverse(this);
+			}
+		});
+		$(document).ready(function(){
+			$.getJSON('https://api.sheety.co/15776791-1e6b-42a3-a1f6-76197c5926f4', function(data) {
+				var template = Handlebars.compile($('#joinTemplate').html())
+				$('#joinButton').html(template(data))
+			})
+		})
+
+    
+	</script>
+	<!-- template for joining objects -->
+	<script id="joinTemplate" type="text/x-handlebars-template" data-turbolinks-eval=always>
+			{% raw %}
+		
+			{{#each this}}
+				{{#if_eq applicationIsOpen "no"}}
+				<a href="/code" class="">
+					<div class="button button--sort">
+						<span class="button__text button__text--thin">Enter a <span class="button__text button__text--var">Code</span></span>
+					</div>
+				</a>
+				{{else}}
+				<a href="{{link}}" class="">
+					<div class="button button--sort">
+						<span class="button__text button__text--thin">Join the <span class="button__text button__text--var">Game</span> </span>
+					</div>
+				</a>
+				{{/if_eq}}
+				
+			{{/each}}
+			{% endraw %}
+	</script>
+	
+<script type="text/javascript" data-turbolinks-eval=always>
+			console.log("I'm run on every page load, including history back/forward");
+		  </script>
+	<!-- buttons -->
+
+
+	<a href="/" class="">
+		<div class="button">
+			<span class="button__text button__text--thin">Go Back</span>
+		</div>
+	</a>
+
+    <style>
+        .keypad {
+            display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-areas: ". . ." ". . ." ". . .";
+        grid-gap:8px;
+        }
+    .keypad-button {
+        border: 2px solid #000;
+        text-align:center;
+        padding-top:4px;
+        padding-bottom:4px;
+        margin-bottom:4px;
+        box-shadow: 0 4px 0 0 #000;
+        border-radius: 4px;
+        font-size: 20px;
+        color: #000;
+        background-color:#fff;
+        transition: all 0.1s;
+    }
+    
+    .keypad-button:hover{
+        margin-top:2px;
+        margin-bottom:2px;
+        box-shadow: 0 2px 0 0 #000;
+    }
+    
+    .keypad-button:active{
+        margin-top:4px;
+        margin-bottom:0px;
+        box-shadow: 0 0px 0 0 #000;
+        
+    }
+        .keypad-button--selected:hover{
+        margin-top:4px;
+        margin-bottom:0px;
+        box-shadow: 0 0px 0 0 #000;
+    }
+    .keypad-button--selected{
+        margin-top:4px;
+        margin-bottom:0px;
+        box-shadow: 0 0px 0 0 #000;
+    }
+    .keypad-button--correct{
+        background-color: rgba(0,123,20,0.5);
+        border-color: #007B14;
+        transition: all 0.5s
+        
+        
+    }
+    .pin-box{
+        font-size: 2em;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        border-bottom: 2px solid #222;
+    }
+    .border{
+        border: 2px solid #222;
+        padding:8px;
+        border-radius: 4px
+    }
+    .FAB {
+        display: none !important
+    }
+    </style>
+
+    <script type="text/javascript" data-turbolinks-eval=always>
+        pinCode = ""
+        function addNumber(e){
+            //document.getElementById('PINbox').value = document.getElementById('PINbox').value+element.value;
+            pinCode = pinCode + e.value
+            $( "#pin" ).html( pinCode );
+        }
+        function reset(e){
+            //document.getElementById('PINbox').value = "";
+            pinCode = ""
+            $("#pin").html("Enter a Code...");
+        }
+        function submit(e) {
+            if (pinCode == "") {
+                alert("Enter a Code");
+            } else {
+                alert( "Your Code has been sent! - " + pinCode );
+                
+                /*		
+                apiCall( data, function( r ) {
+                    $( "#logo" ).attr( "src", r.site_logo );
+                    $( ".title-msg" ).text( r.site_msg );
+                    accent = r.accent;
+                    $( ".accent-bg" ).css( "background-color", accent );
+                });
+                */
+                
+                //document.getElementById('PINbox').value = "";
+                pinCode = ""
+                $( "#pin" ).val( pinCode );
+            };
+        };
+    </script>
+    <div class="border">
+    <div class="pin-box" id="pin">
+        Enter a Code...
+    </div>
+    
+    <div class="keypad">
+        <button value="1" onclick="addNumber(this)" class="keypad-button ">1</button>
+        <button value="2" onclick="addNumber(this)" class="keypad-button">2</button>
+        <button value="3" onclick="addNumber(this)" class="keypad-button">3</button>
+        <button value="4" onclick="addNumber(this)" class="keypad-button">4</button>
+        <button value="5" onclick="addNumber(this)" class="keypad-button ">5</button>
+        <button value="6" onclick="addNumber(this)" class="keypad-button">6</button>
+        <button value="7" onclick="addNumber(this)" class="keypad-button ">7</button>
+        <button value="8" onclick="addNumber(this)" class="keypad-button ">8</button>
+        <button value="9" onclick="addNumber(this)" class="keypad-button">9</button>
+        <button class="keypad-button" id="reset" onclick="reset(this)">
+            reset
+        </button>
+        <button value="0" class="keypad-button" onclick="addNumber(this)">0</button>
+        <button class="keypad-button" id="submit" onclick="submit(this)">
+            submit
+        </button>
+    </div>
+    <br>
+    
+</div>
+{% endblock %}
+		
