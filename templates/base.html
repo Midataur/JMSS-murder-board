@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title%}{% endblock %} | JMSS MURDER</title>
+    <title>{% block title%}{% endblock %} | BILLANOOK MURDER</title>
     <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}">
@@ -38,18 +38,6 @@
     
 </head>
 <body class="transition-fade" id="swup">
-    	<!-- global climate strike script -->
-		<script type="text/javascript" data-turbolinks-eval=always>
-            var DIGITAL_CLIMATE_STRIKE_OPTIONS = {
-              /**
-               * Prevents the widget iframe from loading Google Analytics. Defaults to
-               * false. (Google Analytics will also be disabled if doNotTrack is set on
-               * the user's browser.)
-               */
-              disableGoogleAnalytics: true, // @type {boolean}
-            };
-          </script>
-          <script src="https://assets.digitalclimatestrike.net/widget.js" async data-turbolinks-eval=always></script>
   
         {% block head %}
         {% endblock %}
@@ -67,7 +55,7 @@
             </header>
         {% block content %}{% endblock %}
     </div>
-    <a href="https://discord.gg/sayPckg" class="FAB">
+    <a onclick="alert('No discord exists yet')" class="FAB">
         <span class="FAB__text"><i class="fab fa-discord FAB__icon"></i> <span class="FAB__text__text">Join the</span> Discord</span>
     </a>
 

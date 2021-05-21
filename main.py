@@ -9,6 +9,8 @@ app = Flask(__name__)
 open('./main.db')
 turbolinks(app)
 
+ADMIN_PASS = 'PLEASE_SET_THIS_WHEN_YOU_HOST'
+
 #this is a decorator that handles all of the construction and teardown of sql connections
 #it saves like 50 lines of code
 #idk why i didn't think of this before
@@ -68,13 +70,14 @@ def code():
 @app.route('/createplayer',methods=['POST'])
 @sql_handler
 def createplayer(curs):
+    global ADMIN_PASS
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['code'],))
     #Check if something was wrong with the inputs
     if request.form['playername'] == '' or request.form['pass1'] == '' or request.form['code'] == '':
         return render_template('newplayer.html',fail="invalid")
     elif curs.fetchone() != None:
         return render_template('newplayer.html',fail="taken")
-    elif request.form['pass1'] != 'obvigriefprotec': #Quality security right there
+    elif request.form['pass1'] != ADMIN_PASS: #Quality security right there
         return render_template('newplayer.html',fail="wrong")
     #Create player
     curs.execute('INSERT INTO players (code,kills,alive,name) VALUES (?,0,1,?)',(request.form['code'],request.form['playername']))
@@ -90,6 +93,7 @@ def newkill(curs):
 @app.route('/createkill',methods=['POST'])
 @sql_handler
 def createkill(curs):
+    global ADMIN_PASS
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['killer'],))
     killer = curs.fetchone()
     curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['victim'],))
@@ -100,7 +104,7 @@ def createkill(curs):
     kill_exists = curs.fetchone()
     if killer == None or victim == None:
         return render_template('newkill.html',living=living,fail="invalid")
-    elif request.form['pass1'] != 'obvigriefprotec':
+    elif request.form['pass1'] != ADMIN_PASS:
         return render_template('newkill.html',living=living,fail="wrong")
     elif kill_exists != None:
         return render_template('newkill.html',living=living,fail="exists")
@@ -117,10 +121,11 @@ def adminpage():
 @app.route('/reset',methods=['GET','POST'])
 @sql_handler
 def reset(curs):
+    global ADMIN_PASS
     if request.method == 'GET':
         return render_template('reset.html',fail=None)
     else:
-        if request.form['pass1'] == 'obvigriefprotec':
+        if request.form['pass1'] == ADMIN_PASS:
             curs.execute('UPDATE players SET kills = 0, alive = 1')
             curs.execute('DELETE FROM kills')
             return 'Leader board reset!<br/><a href="/">Leaderboard</a>'
@@ -130,12 +135,13 @@ def reset(curs):
 @app.route('/delete',methods=['GET','POST'])
 @sql_handler
 def deleteplayer(curs):
+    global ADMIN_PASS
     curs.execute('SELECT * FROM players;')
     living = curs.fetchall()
     if request.method == 'GET':
         return render_template('delete.html',living=living,fail=None)
     else:
-        if request.form['pass1'] == 'obvigriefprotec':
+        if request.form['pass1'] == ADMIN_PASS:
             curs.execute('SELECT * FROM players WHERE code = ?;',(request.form['code'],))
             player = curs.fetchone()
             if player != None:
@@ -147,6 +153,7 @@ def deleteplayer(curs):
 @app.route('/undokill',methods=['GET','POST'])
 @sql_handler
 def undokill(curs):
+    global ADMIN_PASS
     curs.execute('SELECT * FROM players;')
     living = curs.fetchall()
     if request.method == 'GET':
@@ -160,7 +167,7 @@ def undokill(curs):
         kill_exists = curs.fetchone()
         if killer == None or victim == None:
             return render_template('undokill.html',living=living,fail="invalid")
-        elif request.form['pass1'] != 'obvigriefprotec':
+        elif request.form['pass1'] != ADMIN_PASS:
             return render_template('undokill.html',living=living,fail="wrong")
         elif kill_exists == None:
             return render_template('undokill.html',living=living,fail="exists")
@@ -175,3 +182,6 @@ def undokill(curs):
 def page_not_found(e):
     # note that we set the 404 status explicitly
     return render_template('404.html'), 404
+
+if __name__ == '__main__':
+	app.run()
